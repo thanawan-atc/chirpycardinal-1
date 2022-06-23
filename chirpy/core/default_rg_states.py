@@ -19,6 +19,9 @@ from chirpy.response_generators.music.state import State as MusicState
 from chirpy.response_generators.wiki2.state import State as WikiState
 from chirpy.response_generators.reopen.state import State as ReopenState
 
+from chirpy.response_generators.ignorant.state import State as IgnorantState
+from chirpy.response_generators.animal.state import State as AnimalState
+
 DEFAULT_RG_STATES = {
     'ACKNOWLEDGMENT': AcknowledgmentState(),
     'ALEXA_COMMANDS': BaseState(),
@@ -40,6 +43,8 @@ DEFAULT_RG_STATES = {
     'TRANSITION': TransitionState(),
     'WIKI': WikiState(),
     'REOPEN': ReopenState(),
+    'IGNORANT' : IgnorantState(),
+    'ANIMAL' : AnimalState()
 }
 
 

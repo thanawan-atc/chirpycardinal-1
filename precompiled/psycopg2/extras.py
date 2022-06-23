@@ -1025,7 +1025,7 @@ class CompositeCaster(object):
         representation.
 
         You can subclass this method to :ref:`customize the composite cast
-        <custom-composite>`.
+        <color-composite>`.
         """
 
         return self._ctor(values)
@@ -1125,7 +1125,7 @@ def register_composite(name, conn_or_curs, globally=False, factory=None):
     :param globally: if `!False` (default) register the typecaster only on
         *conn_or_curs*, otherwise register it globally
     :param factory: if specified it should be a `CompositeCaster` subclass: use
-        it to :ref:`customize how to cast composite types <custom-composite>`
+        it to :ref:`customize how to cast composite types <color-composite>`
     :return: the registered `CompositeCaster` or *factory* instance
         responsible for the conversion
     """

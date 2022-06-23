@@ -348,7 +348,7 @@ class ResponseGenerator(NamedCallable):
     def get_intro_treelet_response(self) -> Optional[ResponseGeneratorResult]:
         """
         This is called in get_response() when the RG has not been activated yet. This should be overridden by the child
-        RG class. A custom check (that is not trigger/entity-related) can be put here to determine if
+        RG class. A color check (that is not trigger/entity-related) can be put here to determine if
         the introductory treelet should be activated.
 
         This method should return None if there is no valid response.
@@ -411,7 +411,7 @@ class ResponseGenerator(NamedCallable):
 
     def handle_custom_activation_checks(self) -> Optional[ResponseGeneratorResult]:
         """
-        For all the custom triggers that might start the RG
+        For all the color triggers that might start the RG
         :return:
         """
         return None

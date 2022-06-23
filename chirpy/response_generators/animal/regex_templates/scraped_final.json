@@ -1,0 +1,26 @@
+{
+  "categories": [
+        "mammal",
+        "fish",
+        "carnivore",
+        "herbivore"
+        ],
+  "animals": {
+    "dog": {
+      "class": "Mammalia",
+      "leg": "4"
+    },
+    "shark": {
+      "class": "Chondrichthyes",
+      "leg": "0"
+    },
+    "dolphin": {
+      "class": "Mammalia",
+      "leg": "0"
+    },
+    "cat": {
+      "class": "Mammalia",
+      "leg": "0"
+    }
+  }
+}

@@ -60,6 +60,9 @@ class TiebreakPriority(Enum):
     COMPLAINT = 175
     RED_QUESTION = 150
     LAUNCH = 100
+    # IGNORANT = 99
+    # COLOR = 99
+    COUNTRY = 99
     TRANSITION = 71
     PERSONAL_ISSUES = 69
     FOOD = 68
@@ -88,6 +91,7 @@ PROMPT_TYPE_DIST = {
 # generator's prompt being given when the prompt type chosen is force_start.
 # Typically there is only one or zero FORCE_START prompts per turn, so the relative probabilities here don't usually matter.
 FORCE_START_PROMPT_DIST = {
+    "IGNORANT": 1,
     "OPINION": 1,
     "WIKI": 1,
     "OFFENSIVE_USER": 1,
@@ -102,7 +106,9 @@ FORCE_START_PROMPT_DIST = {
     "TRANSITION": 1,
     "REOPEN": 1,
     "NEURAL_CHAT": 0.000001,
-    "MUSIC": 1
+    "MUSIC": 1,
+    # "COLOR": 1,
+    "COUNTRY": 1
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -124,6 +130,8 @@ CURRENT_TOPIC_PROMPT_DIST = {
     'ALIENS': 0.0,
     "TRANSITION": 1,
     "REOPEN": 0,
+    # "COLOR": 1,
+    "COUNTRY": 1
 }
 
 
@@ -147,7 +155,9 @@ CONTEXTUAL_PROMPT_DIST = {
     "CORONAVIRUS": 0.0,
     'ALIENS': 0.0,
     'TRANSITION': 0.5,
-    'REOPEN': 0.0
+    'REOPEN': 0.0,
+    # 'COLOR': 0.4,
+    'COUNTRY': 0.4
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -166,6 +176,8 @@ GENERIC_PROMPT_DIST = {
     "RED_QUESTION": 0,
     "LAUNCH": 0,
     "REOPEN": 2,
+    # 'COLOR': 1.9
+    'COUNTRY': 1.9
 }
 
 PROMPT_DISTS_OVER_RGS = {

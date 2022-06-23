@@ -20,6 +20,12 @@ from chirpy.response_generators.categories.categories_response_generator import 
 from chirpy.response_generators.neural_fallback.neural_fallback_response_generator import NeuralFallbackResponseGenerator
 from chirpy.response_generators.closing_confirmation.closing_confirmation_response_generator import ClosingConfirmationResponseGenerator
 
+from chirpy.response_generators.ignorant.aliens_response_generator import IgnorantResponseGenerator
+from chirpy.response_generators.animal.animal_response_generator import AnimalResponseGenerator
+from chirpy.response_generators.color.color_response_generator import ColorResponseGenerator
+from chirpy.response_generators.country.country_response_generator import CountryResponseGenerator
+
+
 ## TODO: fix the PSQL endpoint
 from chirpy.response_generators.music.music_response_generator import MusicResponseGenerator
 from chirpy.response_generators.acknowledgment.acknowledgment_response_generator import AcknowledgmentResponseGenerator
@@ -205,18 +211,21 @@ class LocalAgent():
                 response_generator_classes=[LaunchResponseGenerator, FallbackResponseGenerator,
                                             NeuralFallbackResponseGenerator,
                                             NeuralChatResponseGenerator,
-                                            OffensiveUserResponseGenerator,
-                                            CategoriesResponseGenerator,
-                                            ClosingConfirmationResponseGenerator,
-                                            AcknowledgmentResponseGenerator,
-                                            PersonalIssuesResponseGenerator,
-                                            OpinionResponseGenerator2,
-                                            AliensResponseGenerator,
-                                            TransitionResponseGenerator,
-                                            FoodResponseGenerator,
-                                            WikiResponseGenerator,
-                                            MusicResponseGenerator,
-                                            ],
+                                            # OffensiveUserResponseGenerator,
+                                            # CategoriesResponseGenerator,
+                                            # ClosingConfirmationResponseGenerator,
+                                            # AcknowledgmentResponseGenerator,
+                                            # PersonalIssuesResponseGenerator,
+                                            # OpinionResponseGenerator2,
+                                            # AliensResponseGenerator,
+                                            # TransitionResponseGenerator,
+                                            # FoodResponseGenerator,
+                                            # WikiResponseGenerator,
+                                            # MusicResponseGenerator,
+                                            # ColorResponseGenerator],
+                                            # IgnorantResponseGenerator],
+                                            CountryResponseGenerator],
+
             annotator_classes = [QuestionAnnotator, DialogActAnnotator, NavigationalIntentModule, StanfordnlpModule, CorenlpModule,
                                  EntityLinkerModule, BlenderBot],
             annotator_timeout = NLP_PIPELINE_TIMEOUT
@@ -247,6 +256,7 @@ class LocalAgent():
 
         self.last_state_creation_time = current_state['creation_date_time']
         deserialized_current_state = {k: jsonpickle.decode(v) for k, v in turn_result.current_state.items()}
+
 
         return response, deserialized_current_state
 

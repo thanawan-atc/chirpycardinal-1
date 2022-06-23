@@ -17,6 +17,8 @@ from chirpy.response_generators.neural_chat.treelets.familymember_treelets.famil
 from chirpy.response_generators.neural_chat.treelets.icebreaker_treelet import IcebreakerTreelet
 from chirpy.core.smooth_handoffs import SmoothHandoff
 
+from chirpy.response_generators.neural_chat.treelets.food_treelet import FoodTreelet
+
 
 logger = logging.getLogger('chirpylogger')
 
