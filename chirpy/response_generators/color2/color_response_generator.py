@@ -44,7 +44,6 @@ class Color2ResponseGenerator(ResponseGenerator):
 
         return response_types
 
-
     def get_intro_treelet_response(self) -> Optional[ResponseGeneratorResult]:
         if ResponseType.COLOR_KEYWORDS in self.response_types:
             return self.introductory_treelet.get_response(priority=ResponsePriority.FORCE_START)

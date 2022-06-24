@@ -39,6 +39,5 @@ class CommentColorTreelet(Treelet):
                 prev_treelet_str=self.name,
                 cur_color=self.cur_color,
                 next_treelet_str='transition',
-                repeat_count=state.repeat_count + 1
             )
         )
