@@ -22,8 +22,6 @@ class AskWhyFavoriteCountryTreelet(Treelet):
         cur_country = cur_country_entity.name
 
         user_answer, is_plural = self.get_best_candidate_user_entity(utterance, cur_country)
-        copula = infl('are', is_plural)
-        pronoun = infl('they', is_plural)
 
 
         entity = self.rg.state_manager.current_state.entity_tracker.cur_entity

@@ -22,7 +22,7 @@ from chirpy.response_generators.closing_confirmation.closing_confirmation_respon
 
 from chirpy.response_generators.ignorant.aliens_response_generator import IgnorantResponseGenerator
 from chirpy.response_generators.animal.animal_response_generator import AnimalResponseGenerator
-from chirpy.response_generators.color.color_response_generator import ColorResponseGenerator
+from chirpy.response_generators.color2.color_response_generator import Color2ResponseGenerator
 from chirpy.response_generators.country.country_response_generator import CountryResponseGenerator
 
 
@@ -222,9 +222,9 @@ class LocalAgent():
                                             # FoodResponseGenerator,
                                             # WikiResponseGenerator,
                                             # MusicResponseGenerator,
-                                            # ColorResponseGenerator],
+                                            Color2ResponseGenerator],
                                             # IgnorantResponseGenerator],
-                                            CountryResponseGenerator],
+                                            # CountryResponseGenerator],
 
             annotator_classes = [QuestionAnnotator, DialogActAnnotator, NavigationalIntentModule, StanfordnlpModule, CorenlpModule,
                                  EntityLinkerModule, BlenderBot],
