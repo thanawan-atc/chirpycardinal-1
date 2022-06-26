@@ -61,8 +61,8 @@ class TiebreakPriority(Enum):
     RED_QUESTION = 150
     LAUNCH = 100
     # IGNORANT = 99
-    COLOR2 = 300
-    # COUNTRY = 99
+    # COLOR2 = 300
+    COUNTRY2 = 300
     TRANSITION = 71
     PERSONAL_ISSUES = 69
     FOOD = 68
@@ -107,8 +107,8 @@ FORCE_START_PROMPT_DIST = {
     "REOPEN": 1,
     "NEURAL_CHAT": 0.000001,
     "MUSIC": 1,
-    "COLOR2": 1
-    # "COUNTRY": 1
+    # "COLOR2": 1
+    "COUNTRY2": 1
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -130,8 +130,8 @@ CURRENT_TOPIC_PROMPT_DIST = {
     'ALIENS': 0.0,
     "TRANSITION": 1,
     "REOPEN": 0,
-    "COLOR2": 1
-    # "COUNTRY": 1
+    # "COLOR2": 1
+    "COUNTRY2": 1
 }
 
 
@@ -156,8 +156,8 @@ CONTEXTUAL_PROMPT_DIST = {
     'ALIENS': 0.0,
     'TRANSITION': 0.5,
     'REOPEN': 0.0,
-    'COLOR2': 0.4
-    # 'COUNTRY': 0.4
+    # 'COLOR2': 0.4
+    'COUNTRY2': 0.4
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -176,8 +176,8 @@ GENERIC_PROMPT_DIST = {
     "RED_QUESTION": 0,
     "LAUNCH": 0,
     "REOPEN": 2,
-    'COLOR2': 1.9
-    # 'COUNTRY': 1.9
+    #'COLOR2': 1.9
+    'COUNTRY2': 1.9
 }
 
 PROMPT_DISTS_OVER_RGS = {

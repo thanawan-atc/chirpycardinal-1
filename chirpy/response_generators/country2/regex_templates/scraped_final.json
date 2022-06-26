@@ -1,0 +1,18 @@
+{
+  "country": {
+    "China": {
+      "famous_place": "the Great Wall of China"
+    },
+    "India": {
+      "famous_place": "the Taj Mahal"
+    },
+    "France": {
+      "famous_place": "the Eiffel Tower"
+    },
+    "Canada": {
+      "famous_place": "Niagara Falls"
+    }
+  },
+  "famous_place": ["the Great Wall of China", "the Taj Mahal", "the Eiffel Tower", "Niagara Falls"]
+}
+

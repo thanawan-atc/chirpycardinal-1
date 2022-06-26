@@ -1,0 +1,50 @@
+import logging
+from typing import Optional
+
+from chirpy.core.response_generator import ResponseGenerator
+from chirpy.core.response_priority import ResponsePriority, PromptType
+from chirpy.core.response_generator_datatypes import emptyResult, ResponseGeneratorResult, PromptResult, emptyPrompt, \
+    UpdateEntity, AnswerType
+from chirpy.core.regex.regex_template import RegexTemplate
+from chirpy.core.regex.response_lists import RESPONSE_TO_THATS, RESPONSE_TO_DIDNT_KNOW
+
+from chirpy.response_generators.country2.treelets.introductory_treelet import IntroductoryTreelet
+from chirpy.response_generators.country2.treelets.ask_ever_been_there_treelet import AskEverBeenThereTreelet
+from chirpy.response_generators.country2.treelets.handle_ever_been_there import HandleEverBeenThereTreelet
+from chirpy.response_generators.country2.treelets.ask_favorite_place_treelet import AskFavoritePlaceTreelet
+
+from chirpy.response_generators.country2.state import State, ConditionalState
+
+from chirpy.response_generators.country2.country_helpers import *
+
+logger = logging.getLogger('chirpylogger')
+
+class Country2ResponseGenerator(ResponseGenerator):
+    name = 'COUNTRY2'
+
+    def __init__(self, state_manager) -> None:
+        self.introductory_treelet = IntroductoryTreelet(self)
+        self.ask_ever_been_there_treelet = AskEverBeenThereTreelet(self)
+        self.handle_ever_been_there_treelet = HandleEverBeenThereTreelet(self)
+        self.ask_favorite_place_treelet = AskFavoritePlaceTreelet(self)
+        treelets = {
+            treelet.name: treelet for treelet in [self.introductory_treelet,
+                                                  self.ask_ever_been_there_treelet,
+                                                  self.handle_ever_been_there_treelet,
+                                                  self.ask_favorite_place_treelet]
+        }
+        super().__init__(state_manager, treelets=treelets, can_give_prompts=True,
+                         state_constructor=State,
+                         conditional_state_constructor=ConditionalState)
+
+    def identify_response_types(self, utterance):
+        response_types = super().identify_response_types(utterance)
+
+        if contains_country_keywords(self, utterance):
+            response_types.add(ResponseType.COUNTRY_KEYWORDS)
+
+        return response_types
+
+    def get_intro_treelet_response(self) -> Optional[ResponseGeneratorResult]:
+        if ResponseType.COUNTRY_KEYWORDS in self.response_types:
+            return self.introductory_treelet.get_response(priority=ResponsePriority.FORCE_START)
