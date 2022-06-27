@@ -11,3 +11,4 @@ class State(BaseState):
 class ConditionalState(BaseConditionalState):
     cur_country: Optional['WikiEntity'] = NO_UPDATE
     cur_place: Optional[str] = NO_UPDATE
+    prompt_treelet: Optional[str] = NO_UPDATE

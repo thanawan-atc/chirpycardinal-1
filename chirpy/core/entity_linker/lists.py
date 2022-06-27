@@ -208,6 +208,7 @@ MANUAL_SPAN2ENTINFO = {
     'penguins': ManualLink('https://en.wikipedia.org/wiki/Penguin', force_high_prec=True, delete_alternative_entities=True),
     'potatoes': ManualLink('https://en.wikipedia.org/wiki/Potato', force_high_prec=True, delete_alternative_entities=True),
     'potato': ManualLink('https://en.wikipedia.org/wiki/Potato', force_high_prec=True, delete_alternative_entities=True),
+    'great wall of china': ManualLink('https://en.wikipedia.org/wiki/Great_Wall_of_China', force_high_prec=True, delete_alternative_entities=True),
 
     # Entity Linker
     'alaska': ManualLink('https://en.wikipedia.org/wiki/Alaska'),

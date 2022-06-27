@@ -9,9 +9,15 @@ from chirpy.core.regex.regex_template import RegexTemplate
 from chirpy.core.regex.response_lists import RESPONSE_TO_THATS, RESPONSE_TO_DIDNT_KNOW
 
 from chirpy.response_generators.country2.treelets.introductory_treelet import IntroductoryTreelet
-from chirpy.response_generators.country2.treelets.ask_ever_been_there_treelet import AskEverBeenThereTreelet
-from chirpy.response_generators.country2.treelets.handle_ever_been_there import HandleEverBeenThereTreelet
-from chirpy.response_generators.country2.treelets.ask_favorite_place_treelet import AskFavoritePlaceTreelet
+# from chirpy.response_generators.country2.treelets.ask_ever_been_there_treelet import AskEverBeenThereTreelet
+# from chirpy.response_generators.country2.treelets.handle_ever_been_there import HandleEverBeenThereTreelet
+# from chirpy.response_generators.country2.treelets.ask_favorite_place_treelet import AskFavoritePlaceTreelet
+
+from chirpy.response_generators.country2.treelets.favorite_country_treelet import FavoriteCountryTreelet
+from chirpy.response_generators.country2.treelets.ever_been_country_treelet import EverBeenThereTreelet
+from chirpy.response_generators.country2.treelets.favorite_place_treelet import FavoritePlaceTreelet
+from chirpy.response_generators.country2.treelets.comment_about_favorite_country_treelet import CommentAboutFavoriteCountryTreelet
+from chirpy.response_generators.country2.treelets.doubt_about_favorite_country_treelet import DoubtAboutFavoriteCountryTreelet
 
 from chirpy.response_generators.country2.state import State, ConditionalState
 
@@ -24,14 +30,28 @@ class Country2ResponseGenerator(ResponseGenerator):
 
     def __init__(self, state_manager) -> None:
         self.introductory_treelet = IntroductoryTreelet(self)
-        self.ask_ever_been_there_treelet = AskEverBeenThereTreelet(self)
-        self.handle_ever_been_there_treelet = HandleEverBeenThereTreelet(self)
-        self.ask_favorite_place_treelet = AskFavoritePlaceTreelet(self)
+        # self.ask_ever_been_there_treelet = AskEverBeenThereTreelet(self)
+        # self.handle_ever_been_there_treelet = HandleEverBeenThereTreelet(self)
+        # self.ask_favorite_place_treelet = AskFavoritePlaceTreelet(self)
+
+        self.favorite_country_treelet = FavoriteCountryTreelet(self)
+        self.ever_been_country_treelet = EverBeenThereTreelet(self)
+        self.favorite_place_treelet = FavoritePlaceTreelet(self)
+        self.comment_about_favorite_country_treelet = CommentAboutFavoriteCountryTreelet(self)
+        self.doubt_about_favorite_country_treelet = DoubtAboutFavoriteCountryTreelet(self)
+
         treelets = {
             treelet.name: treelet for treelet in [self.introductory_treelet,
-                                                  self.ask_ever_been_there_treelet,
-                                                  self.handle_ever_been_there_treelet,
-                                                  self.ask_favorite_place_treelet]
+                                                  self.favorite_country_treelet,
+                                                  self.ever_been_country_treelet,
+                                                  self.favorite_place_treelet,
+                                                  self.comment_about_favorite_country_treelet,
+                                                  self.doubt_about_favorite_country_treelet
+                                                  ]
+
+                                                  # self.ask_ever_been_there_treelet,
+                                                  # self.handle_ever_been_there_treelet,
+                                                  # self.ask_favorite_place_treelet]
         }
         super().__init__(state_manager, treelets=treelets, can_give_prompts=True,
                          state_constructor=State,

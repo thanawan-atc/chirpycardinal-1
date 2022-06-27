@@ -45,7 +45,7 @@ with open(UNTALKABLE_CLASSES_FILEPATH, 'r') as f:
 
 UNTALKABLE_CATEGORIES = ['Race (human categorization)']
 
-WHITELIST_IN_UNTALKABLE_CLASSES = ['Coronavirus', 'Great Wall', 'Cat', 'Giant panda']
+WHITELIST_IN_UNTALKABLE_CLASSES = ['Coronavirus', 'Great Wall', 'Cat', 'Giant panda', 'Great Wall of China']
 
 BLACKLIST_ENTITIES = ['Andijan']
 
