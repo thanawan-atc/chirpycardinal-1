@@ -3,7 +3,7 @@ import random
 
 from chirpy.core.response_generator import Treelet
 from chirpy.core.response_priority import ResponsePriority
-from chirpy.core.response_generator_datatypes import ResponseGeneratorResult, PromptResult, PromptType
+from chirpy.core.response_generator_datatypes import ResponseGeneratorResult, PromptResult, PromptType, AnswerType
 from chirpy.response_generators.country2.country_helpers import ResponseType
 from chirpy.response_generators.country2.state import ConditionalState
 
@@ -27,5 +27,6 @@ class IntroductoryTreelet(Treelet):
             conditional_state=self.rg.ConditionalState(
                 prev_treelet_str=self.name,
                 next_treelet_str=self.rg.ask_ever_been_there_treelet.name
-            )
+            ),
+            answer_type=AnswerType.QUESTION_SELFHANDLING,
         )

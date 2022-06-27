@@ -4,10 +4,10 @@ from chirpy.core.response_generator.state import *
 
 @dataclass
 class State(BaseState):
-    cur_country = None
-    cur_place = None
+    cur_country: Optional['WikiEntity'] = None
+    cur_place: Optional[str] = None
 
 @dataclass
 class ConditionalState(BaseConditionalState):
-    cur_country = NO_UPDATE
-    cur_place = NO_UPDATE
+    cur_country: Optional['WikiEntity'] = NO_UPDATE
+    cur_place: Optional[str] = NO_UPDATE

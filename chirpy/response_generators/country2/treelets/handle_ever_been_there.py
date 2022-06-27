@@ -22,31 +22,34 @@ class HandleEverBeenThereTreelet(Treelet):
     def get_response(self, priority=ResponsePriority.STRONG_CONTINUE):
         state, utterance, response_types = self.get_state_utterance_response_types()
 
+        cur_entity = self.rg.get_current_entity()
+
         if ResponseType.YES in response_types:
 
             conditional_state = self.rg.ConditionalState(
                     prev_treelet_str=self.name,
-                    next_treelet_str=self.rg.ask_favorite_place_treelet.name
+                    next_treelet_str=self.rg.ask_favorite_place_treelet.name,
+                    cur_country=cur_entity,
                 )
 
-            conditional_state.cur_country = state.cur_country
+            #conditional_state. = state.cur_country
 
             return ResponseGeneratorResult(
                 text="What is your favorite place there?",
                 priority=ResponsePriority.STRONG_CONTINUE,
                 needs_prompt=False, state=state,
-                cur_entity=self.rg.state_manager.current_state.entity_tracker.cur_entity,
+                cur_entity=cur_entity,
                 conditional_state=conditional_state
             )
         else:
-            cur_country = state.cur_country
+            #cur_country = state.cur_country
 
             text = f"If you have a chance, you should go to {COUNTRY[cur_country]['famous_place']} in {cur_country}!"
             return ResponseGeneratorResult(
                 text=text,
                 priority=ResponsePriority.STRONG_CONTINUE,
                 needs_prompt=False, state=state,
-                cur_entity=self.rg.state_manager.current_state.entity_tracker.cur_entity,
+                cur_entity=cur_entity,
                 conditional_state=self.rg.ConditionalState(
                     prev_treelet_str=self.name,
                     next_treelet_str='transition'
