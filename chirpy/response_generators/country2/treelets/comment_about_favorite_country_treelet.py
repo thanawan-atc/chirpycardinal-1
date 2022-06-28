@@ -16,6 +16,7 @@ engine = inflect.engine()
 
 logger = logging.getLogger('chirpylogger')
 
+AGREEMENT = ["I totally agree! ", "I couldn't agree more! "]
 
 class CommentAboutFavoriteCountryTreelet(Treelet):
     name = "comment_about_favorite_country_treelet"
@@ -34,9 +35,11 @@ class CommentAboutFavoriteCountryTreelet(Treelet):
         is_plural = self.rg.state.cur_country.is_plural
         copula = infl('are', is_plural)
 
-        acknowledgement = "I totally agree! "
+        acknowledgement = random.choice(AGREEMENT)
         neural_response = self.rg.get_neural_response(
             prefix=f"{self.rg.state.cur_country.talkable_name} {copula} very well known for")
+        neural_response = neural_response.split('.')[0] + '.'
+
 
         return ResponseGeneratorResult(
             text= acknowledgement + neural_response,

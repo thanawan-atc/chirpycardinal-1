@@ -136,7 +136,9 @@ def get_templates(cur_entity):
     specific_responses = []
     best_ent_group = None
     for ent_group_name, ent_group in ENTITY_GROUPS_FOR_CLASSIFICATION.ordered_items:
+        logger.primary_info(f"ent group name {ent_group_name} cur_entity {cur_entity}")
         if ent_group.matches(cur_entity):
+            logger.primary_info(f"match {ent_group} {cur_entity}")
             response_templates = get_response_templates(ent_group_name)
             logger.primary_info(f"Got templates for {ent_group_name}: {response_templates}")
             specific_responses += response_templates

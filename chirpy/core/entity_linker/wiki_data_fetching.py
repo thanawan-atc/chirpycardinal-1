@@ -75,6 +75,7 @@ def result2entity(result: dict) -> Optional[WikiEntity]:
     Returns None if the result is a not talkable article (e.g. list pages, disambiguation pages)
     """
     source = result['_source']
+    logger.primary_info(f"Entity from ES is {source}")
     wikidata_categories = source.get('wikidata_categories_all', set())
     categories = source.get('categories', set())
 
@@ -111,6 +112,8 @@ def result2entity(result: dict) -> Optional[WikiEntity]:
 @measure
 def make_wikientities(results: List[Dict]) -> List[WikiEntity]:
     """Given results from ES query to articles index, convert to WikiEntities"""
+    import json
+    logger.primary_info(f"this is json {json.dumps(results)}")
     entities = [result2entity(result) for result in results]  # list of WikiEntities / Nones
     return [ent for ent in entities if ent]  # filter out Nones
 

@@ -37,7 +37,6 @@ class FavoritePlaceTreelet(Treelet):
 
         if ResponseType.NO in response_types:
 
-
             return ResponseGeneratorResult(
                 text="No worries ... ",
                 priority=ResponsePriority.STRONG_CONTINUE,

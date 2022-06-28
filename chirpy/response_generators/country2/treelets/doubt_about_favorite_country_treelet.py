@@ -16,6 +16,7 @@ engine = inflect.engine()
 
 logger = logging.getLogger('chirpylogger')
 
+SHORT_ACKNOWLEDGEMENT = ["Got you!", "Cool!", "Interesting!"]
 
 class DoubtAboutFavoriteCountryTreelet(Treelet):
     name = "doubt_about_favorite_country_treelet"
@@ -32,7 +33,7 @@ class DoubtAboutFavoriteCountryTreelet(Treelet):
     def get_response(self, priority=ResponsePriority.STRONG_CONTINUE):
         state, utterance, response_types = self.get_state_utterance_response_types()
 
-        acknowledgement = f"Got you! You now make me want to visit {self.rg.state.cur_country.talkable_name} once soon."
+        acknowledgement = f"{random.choice(SHORT_ACKNOWLEDGEMENT)} You now make me want to visit {self.rg.state.cur_country.talkable_name} once soon."
 
         return ResponseGeneratorResult(
             text= acknowledgement,

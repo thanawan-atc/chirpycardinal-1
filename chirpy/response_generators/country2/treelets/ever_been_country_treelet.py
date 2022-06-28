@@ -14,6 +14,7 @@ engine = inflect.engine()
 
 logger = logging.getLogger('chirpylogger')
 
+SHORT_ACKNOWLEDGEMENT = ["Wow!", "Cool!", "Nice!"]
 
 class EverBeenThereTreelet(Treelet):
     name = "ever_been_country_treelet"
@@ -36,7 +37,7 @@ class EverBeenThereTreelet(Treelet):
         if ResponseType.YES in response_types:
 
             return ResponseGeneratorResult(
-                text="Wow!",
+                text=random.choice(SHORT_ACKNOWLEDGEMENT),
                 priority=ResponsePriority.STRONG_CONTINUE,
                 needs_prompt=False, state=state,
                 cur_entity=self.rg.get_current_entity(),

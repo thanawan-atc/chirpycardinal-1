@@ -30,6 +30,8 @@ class EntityGroup:
         Input:
             entity: a WikiEntity
         """
+        if entity.name == 'China' and 'country' in self.positives:
+            import pdb; pdb.set_trace();
         if not isinstance(self.entity_blacklist, set):
             self.entity_blacklist = set(self.entity_blacklist)
         if not isinstance(self.entity_whitelist, set):
