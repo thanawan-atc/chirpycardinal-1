@@ -30,8 +30,8 @@ class EntityGroup:
         Input:
             entity: a WikiEntity
         """
-        if entity.name == 'China' and 'country' in self.positives:
-            import pdb; pdb.set_trace();
+        # if entity.name == 'China' and 'country' in self.positives:
+        #     import pdb; pdb.set_trace();
         if not isinstance(self.entity_blacklist, set):
             self.entity_blacklist = set(self.entity_blacklist)
         if not isinstance(self.entity_whitelist, set):
@@ -45,6 +45,11 @@ class EntityGroup:
         if entity.name in self.entity_blacklist:
             return False
         wikidata_categories = set(entity.wikidata_categories)
+
+        print('+1', wikidata_categories)
+        print('+2',set(self.positives))
+        print('+3', set(self.negatives))
+        print('+4', len(wikidata_categories & set(self.positives)))
         return len(wikidata_categories &  set(self.positives))>0 and len(wikidata_categories & set(self.negatives)) == 0
 
     def __hash__(self):

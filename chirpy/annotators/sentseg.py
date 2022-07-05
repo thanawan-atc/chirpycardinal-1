@@ -35,7 +35,7 @@ class NLTKSentenceSegmenter(Annotator):
 
 
         logger.debug(f'Calling SentSeg Remote module with text="{input_data}"')
-        #output = self.remote_call({'text': input_data})
+        # output = self.remote_call({'text': input_data})
         output = None
         if not output or output.get('error', False):
             logger.error(f'Error when running SentSeg Remote Module. \n'

@@ -24,7 +24,7 @@ from chirpy.response_generators.ignorant.aliens_response_generator import Ignora
 from chirpy.response_generators.animal.animal_response_generator import AnimalResponseGenerator
 from chirpy.response_generators.color2.color_response_generator import Color2ResponseGenerator
 from chirpy.response_generators.country2.country_response_generator import Country2ResponseGenerator
-
+from chirpy.response_generators.dinosaur.dinosaur_response_generator import DinosaurResponseGenerator
 
 ## TODO: fix the PSQL endpoint
 from chirpy.response_generators.music.music_response_generator import MusicResponseGenerator
@@ -218,13 +218,14 @@ class LocalAgent():
                                             # PersonalIssuesResponseGenerator,
                                             # OpinionResponseGenerator2,
                                             # AliensResponseGenerator,
-                                            TransitionResponseGenerator,
+                                            #TransitionResponseGenerator,
                                             # FoodResponseGenerator,
-                                            WikiResponseGenerator,
-                                            # MusicResponseGenerator,
+                                            # WikiResponseGenerator,
+                                            # MusicResponseGenerator],
                                             # Color2ResponseGenerator],
                                             # IgnorantResponseGenerator],
                                             Country2ResponseGenerator],
+                                            # DinosaurResponseGenerator],
 
             annotator_classes = [QuestionAnnotator, DialogActAnnotator, NavigationalIntentModule, StanfordnlpModule, CorenlpModule,
                                  EntityLinkerModule, BlenderBot],

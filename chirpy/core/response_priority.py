@@ -63,6 +63,7 @@ class TiebreakPriority(Enum):
     # IGNORANT = 99
     # COLOR2 = 300
     COUNTRY2 = 300
+    # DINOSAUR = 300
     TRANSITION = 71
     PERSONAL_ISSUES = 69
     FOOD = 68
@@ -109,6 +110,7 @@ FORCE_START_PROMPT_DIST = {
     "MUSIC": 1,
     # "COLOR2": 1
     "COUNTRY2": 1
+    # 'DINOSAUR' : 1
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -132,6 +134,7 @@ CURRENT_TOPIC_PROMPT_DIST = {
     "REOPEN": 0,
     # "COLOR2": 1
     "COUNTRY2": 1
+    # 'DINOSAUR' : 1
 }
 
 
@@ -158,6 +161,7 @@ CONTEXTUAL_PROMPT_DIST = {
     'REOPEN': 0.0,
     # 'COLOR2': 0.4
     'COUNTRY2': 0.4
+    # 'DINOSAUR' : 0.4
 }
 
 # Defines a probability distribution over response generators that signifies the likelihood of that response
@@ -178,6 +182,7 @@ GENERIC_PROMPT_DIST = {
     "REOPEN": 2,
     #'COLOR2': 1.9
     'COUNTRY2': 1.9
+    # 'DINOSAUR' : 1.9
 }
 
 PROMPT_DISTS_OVER_RGS = {

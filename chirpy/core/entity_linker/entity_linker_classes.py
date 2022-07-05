@@ -21,7 +21,7 @@ engine = inflect.engine()
 logger = logging.getLogger('chirpylogger')
 
 # Get a set of entity names (strings) which should be considered categories
-CATEGORY_ENTITY_NAMES = {'Film', 'Sport', 'Video game', 'Animal', 'History', 'Science', 'Book', 'Food', 'Art', 'Car', 'Education', 'Pet', 'Television', 'Cooking', 'Dance', 'Celebrity', 'Travel', 'Fashion'}
+CATEGORY_ENTITY_NAMES = {'Film', 'Sport', 'Video game', 'Animal', 'History', 'Science', 'Book', 'Food', 'Art', 'Car', 'Education', 'Pet', 'Television', 'Cooking', 'Dance', 'Celebrity', 'Travel', 'Fashion', 'Country'}
 # CATEGORY_ENTITY_NAMES = {question.cur_entity_wiki_name for category_class in CATEGORYNAME2CLASS.values() for question in category_class.questions} | {'Film'}  # not all these are categories any more, some are specific entities
 
 # Max number of entities in each LinkedSpan

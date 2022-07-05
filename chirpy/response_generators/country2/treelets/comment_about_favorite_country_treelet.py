@@ -16,7 +16,7 @@ engine = inflect.engine()
 
 logger = logging.getLogger('chirpylogger')
 
-AGREEMENT = ["I totally agree! ", "I couldn't agree more! "]
+AGREEMENT = ["I totally agree!", "I couldn't agree more!"]
 
 class CommentAboutFavoriteCountryTreelet(Treelet):
     name = "comment_about_favorite_country_treelet"
@@ -36,17 +36,30 @@ class CommentAboutFavoriteCountryTreelet(Treelet):
         copula = infl('are', is_plural)
 
         acknowledgement = random.choice(AGREEMENT)
-        neural_response = self.rg.get_neural_response(
-            prefix=f"{self.rg.state.cur_country.talkable_name} {copula} very well known for")
-        neural_response = neural_response.split('.')[0] + '.'
 
+        if ResponseType.FOOD_KEYWORDS not in response_types:
+            return ResponseGeneratorResult(
+                text=acknowledgement,
+                priority=ResponsePriority.STRONG_CONTINUE,
+                needs_prompt=False, state=state,
+                cur_entity=self.rg.get_current_entity(),
+                conditional_state=self.rg.ConditionalState(
+                    prev_treelet_str=self.name,
+                    prompt_treelet=self.rg.food_favorite_country_treelet.name)
+            )
 
-        return ResponseGeneratorResult(
-            text= acknowledgement + neural_response,
-            priority=ResponsePriority.STRONG_CONTINUE,
-            needs_prompt=True, state=state,
-            cur_entity=self.rg.state_manager.current_state.entity_tracker.cur_entity,
-            conditional_state=self.rg.ConditionalState(
-                prev_treelet_str=self.name,
-                next_treelet_str="transition")
-        )
+        else:
+
+            neural_response = self.rg.get_neural_response(
+                prefix=f"{self.rg.state.cur_country.talkable_name} {copula} very well known for")
+            neural_response = neural_response.split('.')[0] + '.'
+
+            return ResponseGeneratorResult(
+                text=acknowledgement+neural_response,
+                priority=ResponsePriority.STRONG_CONTINUE,
+                needs_prompt=True, state=state,
+                cur_entity=self.rg.get_current_entity(),
+                conditional_state=self.rg.ConditionalState(
+                    prev_treelet_str=self.name,
+                    next_treelet_str="transition")
+            )

@@ -16,15 +16,23 @@ engine = inflect.engine()
 
 logger = logging.getLogger('chirpylogger')
 
-SHORT_ACKNOWLEDGEMENT = ["Got you!", "Cool!", "Interesting!"]
+COMPLIMENT = ["fabulous", "remarkable!", "fantastic", "incredible"]
 
-class DoubtAboutFavoriteCountryTreelet(Treelet):
-    name = "doubt_about_favorite_country_treelet"
+class FoodFavoriteCountryTreelet(Treelet):
+    name = "food_favorite_country_treelet"
 
     def get_prompt(self, conditional_state=None):
         state, utterance, response_types = self.get_state_utterance_response_types()
 
-        return PromptResult(text=f"Then, why is {self.rg.state.cur_country.talkable_name} your favorite country?",
+        cur_country = self.rg.state.cur_country.talkable_name
+        intro_food = f"{cur_country} cuisine is also {random.choice(COMPLIMENT)}. "
+
+        question = "Have you ever tried any of their food? Is there anything you like?"
+
+        print('+ cur_country', cur_country)
+        print('+ intro', intro_food)
+        print('+ question', question)
+        return PromptResult(text=intro_food+question,
                             prompt_type=PromptType.CURRENT_TOPIC,
                             cur_entity=self.rg.get_current_entity(),
                             state=state, conditional_state=conditional_state)
@@ -33,10 +41,12 @@ class DoubtAboutFavoriteCountryTreelet(Treelet):
     def get_response(self, priority=ResponsePriority.STRONG_CONTINUE):
         state, utterance, response_types = self.get_state_utterance_response_types()
 
-        acknowledgement = f"{random.choice(SHORT_ACKNOWLEDGEMENT)} You now make me want to visit {self.rg.state.cur_country.talkable_name} once soon."
+        food_wiki = "TODO1"
+        food_wiki_description = "TODO2"
+        food_text = f"Personally, I like {food_wiki} which is {food_wiki_description}."
 
         return ResponseGeneratorResult(
-            text=acknowledgement,
+            text= food_text,
             priority=ResponsePriority.STRONG_CONTINUE,
             needs_prompt=False, state=state,
             cur_entity=self.rg.get_current_entity(),

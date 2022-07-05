@@ -2,25 +2,16 @@ import os
 from os.path import abspath, dirname
 import json
 
-KEYWORD_COUNTRY = [
-    "country",
-    "nation",
-    "place"
+KEYWORD_DINOSAUR = [
+    "dinosaur"
 ]
 
-KEYWORD_PLACE = [
-    "place"
-]
-
-KEYWORD_FOOD = [
-    "food",
-    "cuisine"
-]
 
 with open(os.path.join(abspath(dirname(__file__)), 'scraped_final.json')) as datafile:
     f = json.load(datafile)
-    COUNTRY = f['country']
-    PLACE = f['famous_place']
+    DINOSAUR = f['dinosaur']
+
+SUGGESTED_DINOSAUR = ["Tyrannosaurus Rex", "Triceratops", "Velociraptor", "Spinosaurus"]
 
 YES_WORDS = [
     "yes",

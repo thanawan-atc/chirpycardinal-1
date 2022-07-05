@@ -18,6 +18,11 @@ from chirpy.response_generators.country2.treelets.ever_been_country_treelet impo
 from chirpy.response_generators.country2.treelets.favorite_place_treelet import FavoritePlaceTreelet
 from chirpy.response_generators.country2.treelets.comment_about_favorite_country_treelet import CommentAboutFavoriteCountryTreelet
 from chirpy.response_generators.country2.treelets.doubt_about_favorite_country_treelet import DoubtAboutFavoriteCountryTreelet
+from chirpy.response_generators.country2.treelets.food_favorite_country_treelet import FoodFavoriteCountryTreelet
+from chirpy.response_generators.country2.treelets.learn_about_country_treelet import LearnAboutCountryTreelet
+from chirpy.response_generators.country2.treelets.next_country_suggestion_treelet import NextCountrySuggestionTreelet
+from chirpy.response_generators.country2.treelets.handle_unspecified_country_treelet import HandleUnspecifiedCountryTreelet
+from chirpy.response_generators.country2.treelets.ask_aspects_treelet import AskAspectsTreelet
 
 from chirpy.response_generators.country2.state import State, ConditionalState
 
@@ -39,6 +44,11 @@ class Country2ResponseGenerator(ResponseGenerator):
         self.favorite_place_treelet = FavoritePlaceTreelet(self)
         self.comment_about_favorite_country_treelet = CommentAboutFavoriteCountryTreelet(self)
         self.doubt_about_favorite_country_treelet = DoubtAboutFavoriteCountryTreelet(self)
+        self.food_favorite_country_treelet = FoodFavoriteCountryTreelet(self)
+        self.learn_about_country_treelet = LearnAboutCountryTreelet(self)
+        self.next_country_suggestion_treelet = NextCountrySuggestionTreelet(self)
+        self.handle_unspecified_country_treelet = HandleUnspecifiedCountryTreelet(self)
+        self.ask_aspects_treelet = AskAspectsTreelet(self)
 
         treelets = {
             treelet.name: treelet for treelet in [self.introductory_treelet,
@@ -46,7 +56,12 @@ class Country2ResponseGenerator(ResponseGenerator):
                                                   self.ever_been_country_treelet,
                                                   self.favorite_place_treelet,
                                                   self.comment_about_favorite_country_treelet,
-                                                  self.doubt_about_favorite_country_treelet
+                                                  self.doubt_about_favorite_country_treelet,
+                                                  self.food_favorite_country_treelet,
+                                                  self.learn_about_country_treelet,
+                                                  self.next_country_suggestion_treelet,
+                                                  self.handle_unspecified_country_treelet,
+                                                  self.ask_aspects_treelet
                                                   ]
 
                                                   # self.ask_ever_been_there_treelet,
@@ -62,6 +77,24 @@ class Country2ResponseGenerator(ResponseGenerator):
 
         if contains_country_keywords(self, utterance):
             response_types.add(ResponseType.COUNTRY_KEYWORDS)
+
+        if contains_food_keywords(self, utterance):
+            response_types.add(ResponseType.FOOD_KEYWORDS)
+
+        if contains_specific_country(self, utterance):
+            response_types.add(ResponseType.COUNTRY)
+
+        if contains_economy(self, utterance):
+            response_types.add(ResponseType.ECONOMY)
+
+        if contains_geography(self, utterance):
+            response_types.add(ResponseType.GEOGRAPHY)
+
+        if contains_language(self, utterance):
+            response_types.add(ResponseType.LANGUAGE)
+
+        if contains_cuisine(self, utterance):
+            response_types.add(ResponseType.CUISINE)
 
         return response_types
 

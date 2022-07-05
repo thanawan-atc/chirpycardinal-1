@@ -62,10 +62,10 @@ class FavoritePlaceTreelet(Treelet):
             return ResponseGeneratorResult(
                 text=neural_response+suffix,
                 priority=ResponsePriority.STRONG_CONTINUE,
-                needs_prompt=True, state=state,
+                needs_prompt=False, state=state,
                 cur_entity=self.rg.state_manager.current_state.entity_tracker.cur_entity,
                 conditional_state=self.rg.ConditionalState(
                     prev_treelet_str=self.name,
-                    next_treelet_str="transition",
+                    prompt_treelet=self.rg.learn_about_country_treelet.name,
                     cur_place=cur_place)
         )
