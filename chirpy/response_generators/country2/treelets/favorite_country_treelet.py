@@ -47,14 +47,15 @@ class FavoriteCountryTreelet(Treelet):
         acknowledgement = random.choice(AGREEMENT).format(cur_country.talkable_name)
         infilling = ""
 
-        # wiki_rg = WikiResponseGenerator(self.rg.state_manager)
-        # top_res, top_ack = wiki_rg.get_infilling_statement(cur_country)
-        # logger.primary_info(f"Top res is: {top_res}")
-        # logger.primary_info(f"Top ack is: {top_ack}")
-        # if top_res is not None:
-        #     infilling = f"{top_res}.",
-        #
-        # print('+', infilling)
+        print('+ cur_country', cur_country)
+        wiki_rg = WikiResponseGenerator(self.rg.state_manager)
+        top_res, top_ack = wiki_rg.get_infilling_statement(cur_country)
+        logger.primary_info(f"Top res is: {top_res}")
+        logger.primary_info(f"Top ack is: {top_ack}")
+        if top_res is not None:
+            infilling = f"{top_res}.",
+
+        print('+ infilling', infilling)
 
         # War wiki_infiller.py: 146 Couldn't find any specific templates for entity <WikiEntity: France> (confidence=0.976, sum_anchortext_counts=161719)>.                                                                                           [13:27:01.908]
         # Inf favorite_country_tree…:47 Topres is: None[13:27:01.910]
